@@ -1,0 +1,40 @@
+<nav aria-label="Page navigation example">
+    <ul class="pagination">
+        <li class="page-item"><a class="page-link" (click)="previous()">Previous</a></li>
+
+        <li [ngClass]="{'page-item': page !== pageActive, 'page-item active': page == pageActive}"
+            *ngFor="let page of getNumPage()" (click)="changePage(page)">
+
+            <a *ngIf="page !== pageActive" class="page-link">{{page}}</a>
+            <a *ngIf="page == pageActive" class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
+        </li>
+
+        <li class="page-item"><a class="page-link" (click)="next()">Next</a></li>
+    </ul>
+</nav>
+
+<table class="table">
+
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">Numeric code</th>
+            <th scope="col">Name</th>
+            <th scope="col">Native Name</th>
+            <th scope="col">Capital</th>
+            <th scope="col">Region</th>
+            <th scope="col">Flag</th>
+        </tr>
+    </thead>
+
+    <tr *ngFor="let pais of getPage()" (click)="viewDetails(pais.alpha2Code)" class="mytr">
+        <td scope="row">{{pais.numericCode}}</td>
+        <td>{{pais.name}}</td>
+        <td>{{pais.nativeName}}</td>
+        <td>{{pais.capital}}</td>
+        <td>{{pais.region}}</td>
+        <td>
+            <img class="my-img" src="{{pais.flag}}" alt="">
+        </td>
+    </tr>
+
+</table>

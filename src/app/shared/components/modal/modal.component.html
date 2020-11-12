@@ -9,4 +9,18 @@
         <p><strong>Population : </strong> {{data.country.population}}</p>
         <p><strong>Subregion : </strong> {{data.country.subregion}}</p>
     </div>
+
+    <div class="contenidoGraficas">
+        <div class="graficaCircular">
+            <app-pie-chart [country]="data.country.name"></app-pie-chart>
+        </div>
+        <div class="graficaBarras">
+            <app-line-chart></app-line-chart>
+        </div>
+    </div>
+
 </div>
+
+<!-- <button (click)="onNoClick()" class="btn btn-light closed">
+    <strong>Close</strong>
+</button> -->

@@ -1,5 +1,5 @@
 .contenido {
-    background-color: silver;
+    background-color: white;
     color: black;
     font-size: 18px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -8,7 +8,11 @@
     height: auto;
     display: flex;
     flex-direction: row;
-    // margin: 50px;
+    border-radius: 25px;
+}
+
+.contenido strong{
+    color: black;
 }
 
 .contenidoCiudad {
@@ -22,5 +26,32 @@
 .contenidoCiudad img {
     width: 300px;
     height: 200px;
+    margin: 10px;
+    border: 1px solid black;
+}
+
+// .closed {
+//     width: 100px;
+//     height: 40px;
+//     padding: 10px;
+//     margin-top: 20px;
+//     text-align: center;
+// }
+
+.contenidoGraficas {
+    display: flex;
+    flex-direction: column;
+    border-left: 1px solid black;
+}
+
+.graficasCircular {
+    width: 500px;
+    height: 500px;
+    margin: 10px;
+}
+
+.graficaBarras {
+    width: 550px;
+    height: auto;
     margin: 10px;
 }

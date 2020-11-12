@@ -8,11 +8,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './shared/components/home/home.component';
 import { RestCountreisService } from './shared/services/rest-countreis.service';
 import { MaterialModule } from './material.module';
+import { ModalComponent } from './shared/components/modal/modal.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
+    ModalComponent,
   ],
   imports: [
     BrowserModule,

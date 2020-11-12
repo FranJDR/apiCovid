@@ -1,4 +1,4 @@
-<nav aria-label="Page navigation example">
+<nav aria-label="Page navigation example" class="paginationContainer">
     <ul class="pagination">
         <li class="page-item"><a class="page-link" (click)="previous()">Previous</a></li>
 
@@ -38,3 +38,18 @@
     </tr>
 
 </table>
+
+<nav aria-label="Page navigation example paginationCont" class="paginationContainer">
+    <ul class="pagination">
+        <li class="page-item"><a class="page-link" (click)="previous()">Previous</a></li>
+
+        <li [ngClass]="{'page-item': page !== pageActive, 'page-item active': page == pageActive}"
+            *ngFor="let page of getNumPage()" (click)="changePage(page)">
+
+            <a *ngIf="page !== pageActive" class="page-link">{{page}}</a>
+            <a *ngIf="page == pageActive" class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
+        </li>
+
+        <li class="page-item"><a class="page-link" (click)="next()">Next</a></li>
+    </ul>
+</nav>

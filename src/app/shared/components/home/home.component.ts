@@ -1,6 +1,8 @@
 import { Countreis } from './../../models/countreis';
 import { RestCountreisService } from './../../services/rest-countreis.service';
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { ModalComponent } from '../modal/modal.component';
 
 @Component({
   selector: 'app-home',
@@ -8,6 +10,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+
+  // ng g c modal --skipTests
 
   paises: Countreis[];
   activePage: number;
@@ -17,7 +21,8 @@ export class HomeComponent implements OnInit {
   private maxPage: number;
 
   constructor(
-    private countreis: RestCountreisService
+    private countreis: RestCountreisService,
+    private dialog: MatDialog
   ) { }
 
   ngOnInit(): void {
@@ -30,18 +35,30 @@ export class HomeComponent implements OnInit {
     });
   }
 
+  viewDetails(code: string) {
+    this.countreis.getByCode(code).then(res => {
+      this.openDialog(res);
+    });
+  }
+
+  openDialog(pais: Countreis): void {
+    const dialogRef = this.dialog.open(ModalComponent, {
+      width: '80%',
+      height: '80%',
+      data: { pias: pais }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
+  }
+
   getNumPage(): number[] {
     let retorno: number[] = [];
     for (let i = 1; i <= this.maxPage; i++) {
       retorno.push(i);
     }
     return retorno;
-  }
-
-  viewDetails(code: string) {
-    this.countreis.getByCode(code).then(res => {
-      console.log(res);
-    });
   }
 
   changePage(page: number) { this.activePage = page; }
@@ -51,5 +68,5 @@ export class HomeComponent implements OnInit {
   next() { if (this.activePage != this.maxPage) this.activePage++; }
 
   previous() { if (this.activePage != 1) this.activePage--; }
-  
+
 }

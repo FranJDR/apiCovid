@@ -6,9 +6,10 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './shared/components/home/home.component';
-import { RestCountreisService } from './shared/services/rest-countreis.service';
 import { MaterialModule } from './material.module';
 import { ModalComponent } from './shared/components/modal/modal.component';
+import { ChartsModule } from 'ng2-charts';
+import { ApiCountreisService } from './shared/services/api-countreis.service';
 
 @NgModule({
   declarations: [
@@ -21,10 +22,11 @@ import { ModalComponent } from './shared/components/modal/modal.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    MaterialModule
+    MaterialModule,
+    ChartsModule
   ],
   providers: [
-    RestCountreisService
+    ApiCountreisService
   ],
   bootstrap: [AppComponent]
 })

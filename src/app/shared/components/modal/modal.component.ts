@@ -1,6 +1,6 @@
+import { Country } from './../../models/country';
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Countreis } from '../../models/countreis';
 
 @Component({
   selector: 'app-modal',
@@ -11,10 +11,12 @@ export class ModalComponent implements OnInit {
 
   constructor(
     public dialogRef: MatDialogRef<ModalComponent>,
-    @Inject(MAT_DIALOG_DATA) data: Countreis
+    @Inject(MAT_DIALOG_DATA) public data: Country,
   ) { }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    console.log(this.data);
+  }
 
   onNoClick(): void {
     this.dialogRef.close();

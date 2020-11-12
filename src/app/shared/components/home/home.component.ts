@@ -1,8 +1,8 @@
-import { Countreis } from './../../models/countreis';
-import { RestCountreisService } from './../../services/rest-countreis.service';
+import { Country } from '../../models/country';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ModalComponent } from '../modal/modal.component';
+import { ApiCountreisService } from '../../services/api-countreis.service';
 
 @Component({
   selector: 'app-home',
@@ -13,7 +13,7 @@ export class HomeComponent implements OnInit {
 
   // ng g c modal --skipTests
 
-  paises: Countreis[];
+  paises: Country[];
   activePage: number;
 
   private itemsPage: number;
@@ -21,12 +21,12 @@ export class HomeComponent implements OnInit {
   private maxPage: number;
 
   constructor(
-    private countreis: RestCountreisService,
+    private apiCountreis: ApiCountreisService,
     private dialog: MatDialog
   ) { }
 
   ngOnInit(): void {
-    this.countreis.getAll().subscribe((res: Countreis[]) => {
+    this.apiCountreis.getAll().subscribe((res: Country[]) => {
       this.itemsPage = 20;
       this.activePage = 1;
       this.paises = res;
@@ -36,16 +36,16 @@ export class HomeComponent implements OnInit {
   }
 
   viewDetails(code: string) {
-    this.countreis.getByCode(code).then(res => {
+    this.apiCountreis.getByCode(code).then(res => {
       this.openDialog(res);
     });
   }
 
-  openDialog(pais: Countreis): void {
+  openDialog(country: Country): void {
     const dialogRef = this.dialog.open(ModalComponent, {
-      width: '80%',
-      height: '80%',
-      data: { pias: pais }
+      width: 'auto',
+      height: 'auto',
+      data: { country: country }
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -65,8 +65,8 @@ export class HomeComponent implements OnInit {
 
   getPage() { return this.paises.slice(this.activePage - 1, this.activePage + this.itemsPage - 1); }
 
-  next() { if (this.activePage != this.maxPage) this.activePage++; }
+  next() { if (this.activePage != this.maxPage) this.activePage += this.itemsPage; }
 
-  previous() { if (this.activePage != 1) this.activePage--; }
+  previous() { if (this.activePage != 1) this.activePage -= this.itemsPage; }
 
 }

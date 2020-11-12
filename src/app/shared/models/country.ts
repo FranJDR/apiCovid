@@ -1,4 +1,4 @@
-export interface Countreis {
+export interface Country {
     numericCode?: string;
     name?: string;
     region?: string;
@@ -6,4 +6,7 @@ export interface Countreis {
     capital?: string;
     flag?: string;
     alpha2Code?: string;
+    population?: string;
+    latlng?: string[];
+    subregion?: string;
 }

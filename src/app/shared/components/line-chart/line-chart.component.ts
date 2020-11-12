@@ -49,7 +49,7 @@ export class LineChartComponent implements OnInit, OnChanges {
     this.lineChartColors = [
       {
         borderColor: '#29FBA9',
-        backgroundColor: 'rgba(214,37,152)',
+        backgroundColor: 'rgba(214,37,152)'
       },
     ]
   }
@@ -63,9 +63,17 @@ export class LineChartComponent implements OnInit, OnChanges {
           ticks: {
             display: true,
             beginAtZero: true,
-            suggestedMax: 5000
+            suggestedMax: 5000,
+            fontColor: 'black',
+            fontSize: 16
           }
         }],
+        xAxes: [{
+          ticks: {
+            fontColor: 'black',
+            fontSize: 16
+          }
+        }]
       },
       legend: {
         display: false,

@@ -11,12 +11,18 @@
     </div>
 
     <div class="contenidoGraficas">
+
         <div class="graficaCircular">
-            <app-pie-chart [country]="data.country.name"></app-pie-chart>
+            <app-pie-chart 
+                [totalDeaths]="getTotalDeaths()"
+                [totalRecovered]="getTotalRecovered()">
+            </app-pie-chart>
         </div>
+
         <div class="graficaBarras">
             <app-line-chart></app-line-chart>
         </div>
+        
     </div>
 
 </div>

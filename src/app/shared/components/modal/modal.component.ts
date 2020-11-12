@@ -22,4 +22,12 @@ export class ModalComponent implements OnInit {
     this.dialogRef.close();
   }
 
+  getTotalDeaths() {
+    return 10;
+  }
+
+  getTotalRecovered() {
+    return 90;
+  }
+
 }

@@ -10,7 +10,9 @@ import { Label, SingleDataSet } from 'ng2-charts';
 })
 export class PieChartComponent implements OnInit, OnChanges {
 
-  @Input() data: any;
+  @Input() totalDeaths: any;
+  @Input() totalRecovered: any;
+
   pieChartLabels: Label[] = ['Deaths', 'Recovered'];
   covidTotals: SingleDataSet = [40, 30];
   pieChartType: string;
@@ -45,13 +47,16 @@ export class PieChartComponent implements OnInit, OnChanges {
         labels: ['Death', 'Recovered'],
         datasets: [{
           label: 'Recovered Vs Deaths',
-          data: [25, 100],
+          data: [this.totalDeaths, this.totalRecovered],
           backgroundColor: ['#fd4e4e', '#4ea6fd'],
           borderColor: ['black', 'black'],
-          borderWidth: 1
+          borderWidth: 1,
         }],
       },
     });
   }
+
+
+  
 
 }

@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Country } from '../models/country';
+import { Region } from '../models/region';
 
 @Injectable({
   providedIn: 'root'
@@ -23,6 +24,10 @@ export class ApiCountreisService {
 
   getByCode(code: string): Promise<any> {
     return this.http.get('https://restcountries.eu/rest/v2/alpha/' + code).toPromise();
+  }
+
+  getByRegion(region: Region): Promise<any> {
+    return this.http.get('https://restcountries.eu/rest/v2/region/' + region).toPromise();
   }
 
 }

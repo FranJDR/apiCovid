@@ -1,7 +1,7 @@
 <h2 mat-dialog-title>{{data.country.name}} details </h2>
 
 <div class="contenido">
-    
+
     <div class="contenidoCiudad">
         <img src="{{data.country.flag}}">
         <p><strong>Native Name : </strong> {{data.country.nativeName}}</p>
@@ -15,15 +15,19 @@
 
         <div class="graficaCircular">
             <app-pie-chart 
-                [totalDeaths]="getTotalDeaths()"
-                [totalRecovered]="getTotalRecovered()">
-            </app-pie-chart>
+            [totalDeaths]="getTotalDeaths()" 
+            [totalRecovered]="getTotalRecovered()"
+            [totalActive]="getTotalActive()"
+            ></app-pie-chart>
         </div>
 
         <div class="graficaBarras">
-            <app-line-chart></app-line-chart>
+            <app-line-chart
+            [data]="data.chartData"
+            [country]="hola"
+            ></app-line-chart>
         </div>
-        
+
     </div>
 
 </div>

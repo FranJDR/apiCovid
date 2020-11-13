@@ -1,5 +1,5 @@
 import { MatTableModule } from '@angular/material/table';
-import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
@@ -35,7 +35,8 @@ const myModuleMaterial = [
   MatSortModule,
   MatSnackBarModule,
   MatPaginatorModule,
-  MatSelectModule
+  MatSelectModule,
+  MatProgressSpinnerModule
 ]
 
 @NgModule({

@@ -23,12 +23,15 @@ export class ModalComponent implements OnInit {
   }
 
   getTotalDeaths() {
-    return this.data.deaths;
+    return this.data.chartData[1].data[this.data.chartData[1].data.length - 1];
   }
 
   getTotalRecovered() {
-    return this.data.recovered;
+    return this.data.chartData[2].data[this.data.chartData[2].data.length - 1];
   }
 
+  getTotalActive() {
+    return this.data.chartData[0].data[this.data.chartData[0].data.length - 1];
+  }
 
 }

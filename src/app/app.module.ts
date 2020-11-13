@@ -12,6 +12,7 @@ import { ChartsModule } from 'ng2-charts';
 import { ApiCountreisService } from './shared/services/api-countreis.service';
 import { PieChartComponent } from './shared/components/pie-chart/pie-chart.component';
 import { LineChartComponent } from './shared/components/line-chart/line-chart.component';
+import { ApiCovidService } from './shared/services/api-covid.service';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { LineChartComponent } from './shared/components/line-chart/line-chart.co
     ChartsModule
   ],
   providers: [
-    ApiCountreisService
+    ApiCountreisService,
+    ApiCovidService
   ],
   bootstrap: [AppComponent]
 })

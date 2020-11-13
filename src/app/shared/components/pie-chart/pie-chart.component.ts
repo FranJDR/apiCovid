@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import * as Chart from 'chart.js';
 import { ChartOptions } from 'chart.js';
 import { Label, SingleDataSet } from 'ng2-charts';
@@ -57,6 +57,6 @@ export class PieChartComponent implements OnInit, OnChanges {
   }
 
 
-  
+
 
 }

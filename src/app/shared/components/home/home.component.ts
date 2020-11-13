@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ModalComponent } from '../modal/modal.component';
 import { ApiCountreisService } from '../../services/api-countreis.service';
+import { ApiCovidService } from '../../services/api-covid.service';
 
 @Component({
   selector: 'app-home',
@@ -22,7 +23,8 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private apiCountreis: ApiCountreisService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private apiCovid: ApiCovidService
   ) { }
 
   ngOnInit(): void {
@@ -36,16 +38,21 @@ export class HomeComponent implements OnInit {
   }
 
   viewDetails(code: string) {
-    this.apiCountreis.getByCode(code).then(res => {
-      this.openDialog(res);
+    this.apiCountreis.getByCode(code).then(cauntry => {
+      this.apiCovid.getCauntry(cauntry.name).subscribe(res => {
+        // console.log(res);
+        let deaths: number = res[res.length - 1].Deaths;
+        let recovered: number = res[res.length - 1].Recovered;
+        this.openDialog(cauntry, deaths, recovered);
+      });
     });
   }
 
-  openDialog(country: Country): void {
+  openDialog(country: Country, deaths: number, recovered: number): void {
     const dialogRef = this.dialog.open(ModalComponent, {
       width: 'auto',
       height: 'auto',
-      data: { country: country }
+      data: { country: country, deaths, recovered }
     });
 
     dialogRef.afterClosed().subscribe(result => {
